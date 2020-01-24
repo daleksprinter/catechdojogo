@@ -4,8 +4,8 @@
 
 create table users(
     id int primary key auto_increment,
-    name varchar(255) not null,
-    token varchar(255) not null unique
+    name varchar(255) not null unique,
+    token varchar(255) not null
 );
 
 -- +goose Down

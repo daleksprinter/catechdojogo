@@ -1,24 +1,26 @@
 package main
 
 import (
-	"github.com/gorilla/mux"
 	"github.com/daleksprinter/catechdojo/controller"
 	"github.com/daleksprinter/catechdojo/db"
-	"net/http"
+	"github.com/gorilla/mux"
 	"log"
-
+	"net/http"
 )
 
 func NewRouter() *mux.Router {
 	r := mux.NewRouter()
 	r.HandleFunc("/user/create", controller.CreateUserController).Methods("POST")
+	r.HandleFunc("/user/get", controller.GetUserController).Methods("GET")
+	r.HandleFunc("/user/update", controller.UpdateUserController).Methods("PUT")
 
 	return r
 }
 
-func main(){
+func main() {
 	router := NewRouter()
 	db.NewDB("root:password@tcp(catechdojo_db)/CATechDojo")
+	defer db.DB.Close()
 
 	srv := &http.Server{
 		Handler: router,
@@ -28,4 +30,3 @@ func main(){
 	log.Fatal(srv.ListenAndServe())
 
 }
-
