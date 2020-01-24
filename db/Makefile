@@ -1,5 +1,5 @@
 DBNAME:=CATechDojo
-goose:= /Users/ryomac/go/bin/goose
+goose:= $(which goose)
 
 migrate/create:
 	$(goose) create $(NAME) sql
