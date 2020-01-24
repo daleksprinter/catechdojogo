@@ -28,3 +28,14 @@ func CreateUserController(w http.ResponseWriter, r * http.Request){
 	json.NewEncoder(w).Encode(resp)
 
 }
+
+func GetUserController(w http.ResponseWriter, r * http.Request){
+	token := r.Header.Get("x-token")
+
+	user := repository.GetUser(token)
+
+	resp := model.UserGetResponse{}
+	resp.Name = user.Name
+
+	json.NewEncoder(w).Encode(resp)
+}

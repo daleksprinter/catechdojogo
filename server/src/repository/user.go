@@ -14,3 +14,11 @@ func CreateUser(name string, token string) model.User {
 	db.DB.Create(&user)
 	return user
 }
+
+func GetUser(token string) model.User {
+	user := model.User{}
+	user.Token = token
+	db.DB.First(&user)
+
+	return user
+}

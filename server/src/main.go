@@ -12,6 +12,7 @@ import (
 func NewRouter() *mux.Router {
 	r := mux.NewRouter()
 	r.HandleFunc("/user/create", controller.CreateUserController).Methods("POST")
+	r.HandleFunc("/user/get", controller.GetUserController).Methods("GET")
 
 	return r
 }
