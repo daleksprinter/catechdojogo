@@ -1,12 +1,11 @@
-##Usage
+## Usage
 ```
-    docker-compose up --build db
-    
-    cd db
-    make db/reset
-    make migrate/up
+docker-compose up --build db
 
-    cd ../
-    docker-compose up --build server
-    
+cd db
+make db/reset
+make migrate/up
+
+cd ../
+docker-compose up --build server
 ```
